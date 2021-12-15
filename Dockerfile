@@ -1,11 +1,5 @@
 FROM openjdk:8-jdk-alpine
 
-ENV spring.datasource.url="jdbc:mysql://mysql_container:3306/employeedb?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true"
-
-ENV spring.datasource.username="root"
-
-ENV spring.datasource.password="root"
-
 ARG JAR_FILE=target/employee-app.jar
 
 WORKDIR /opt/app
