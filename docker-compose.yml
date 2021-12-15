@@ -1,0 +1,27 @@
+version: "3"
+services:
+  employee:
+    #image: employee:1.0  #Use this to build your image from docker repository/registry
+    build: .  #Use this if you want to build your image from docker file in same directory as docker compose-file
+    container_name: employee-micro-service  #Name you want to give to your container
+    ports: 
+      - 8009:9192
+    environment:
+      spring.datasource.url: "jdbc:mysql://docker-mysql:3306/employeedb?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true"
+      spring.datasource.username: "root"
+      spring.datasource.password: "root"
+#    networks:
+#      - employee-db-network
+    depends_on:
+      - docker-mysql
+      
+  docker-mysql:
+    image: mysql:latest #Because I am building mysql container from image in docker registry
+    container_name: mysql-container
+    environment:  #Very important
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=employeedb
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=root
+    ports:
+      - 8005:3306
