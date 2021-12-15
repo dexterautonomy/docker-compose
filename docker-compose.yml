@@ -23,5 +23,10 @@ services:
       - MYSQL_DATABASE=employeedb
 #      - MYSQL_USER=root
 #      - MYSQL_PASSWORD=root
-    ports:
-      - 8005:3306
+#    ports:
+#      - 8005:3306
+#    networks:
+#      - employee-db-network
+
+#networks: 
+#  employee-db-network: 
